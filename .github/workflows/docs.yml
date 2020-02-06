@@ -15,3 +15,4 @@ jobs:
       with:
         docs-folder: "docs/"
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        pre-build-command: "apt-get update -y && apt-get install -y git"
