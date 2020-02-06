@@ -1,0 +1,17 @@
+name: "Pull Request Docs Check"
+
+on: 
+- pull_request
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    name: Docs
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Sphinx build
+      uses: ammaraskar/sphinx-action@master
+      with:
+        docs-folder: "docs/"
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
