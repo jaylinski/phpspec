@@ -1,0 +1,146 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=description content><meta name=viewport content="width=device-width,initial-scale=1"><title>&#8212; phpspec v6.1</title><link rel=alternate hreflang=en href=http://www.phpspec.net/manual/getting-started/><link rel=icon href=/favicon.ico type=image/x-icon><style type=text/css integrity="sha256-7hJdmgAToJMZp17gcOEPUMhzbO9hvPLSs8jqVBYO1Zc=">*,*::before,*::after{box-sizing:border-box}ul[class],ol[class]{padding:0}body,h1,h2,h3,h4,p,ul[class],ol[class],li,figure,figcaption,blockquote,dl,dd{margin:0}body{min-height:100vh;scroll-behavior:smooth;text-rendering:optimizeSpeed;line-height:1.5}ul[class],ol[class]{list-style:none}a:not([class]){text-decoration-skip-ink:auto}img{max-width:100%;display:block}article>*+*{margin-top:1em}input,button,textarea,select{font:inherit}@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}body{color:#414141;font-family:trebuchet ms,serif;background:#fff url(/images/bg.jpg)repeat-x;margin:0}a{color:#111}a:hover{text-decoration:none}h1,h2,h3{color:#333;font-style:italic}h1{font-size:30px;margin-bottom:.8em}h2{font-size:26px;margin-top:.8em;margin-bottom:.6em}p{font-size:15px;line-height:20px;margin-bottom:1em}pre{overflow:auto}table{border-collapse:collapse}table td,table th{border:1px solid rgba(0,0,0,.4);padding:4px 8px;text-align:left}section{max-width:840px;overflow:auto;margin:0 auto;padding:0 15px}main{margin-bottom:5em}footer{color:#777;border-top:1px solid #ccc}footer ul{list-style:none;padding:0}footer a{color:inherit}.nav-main{display:flex;justify-content:space-between;border-bottom:1px solid #c4c4c4;margin:10px 0 2em}.nav-main a{display:block;border-top:5px solid #727272;width:160px;padding:8px 0 10px;text-decoration:none;text-align:center}.nav-main a:hover{border-top-color:#fff}.nav-main ul{display:flex;list-style:none;padding:0}.nav-main .nav-active{color:#000;border-top-color:#000}.highlight pre{border-radius:5px;padding:12px 14px}.home{text-align:center;margin:4em 0}.home img{display:inline}.home h1{color:#4f4f4f;line-height:48px;margin-top:2em}.home h1 em{color:#111}.quickstart{border-top:1px solid #ccc;padding-top:2em}</style></head><body><section><nav class=nav-main><ul class=nav-item-main><li><a href=/>main</a></li><li><a href=/manual/introduction/>phpspec manual</a></li></ul><ul class=nav-item-github><li><a href=https://www.github.com/phpspec/phpspec target=_blank>phpspec repo</a></li><li><a href=https://www.github.com/phpspec/prophecy target=_blank>prophecy repo</a></li></ul></nav><main><h1></h1><h1 id=getting-started>Getting Started</h1><p>Say you are building a tool that converts
+<a href=http://en.wikipedia.org/wiki/Markdown>Markdown</a> into HTML. Well,
+that&rsquo;s a large task. But you can work on simple things first and a
+design will emerge that will reach all the necessary features.</p><p>What is the simplest thing you could add? It should convert a string
+line into a paragraph with HTML markup, i.e. &ldquo;Hi, there&rdquo; would become
+&ldquo;&lt;p>Hi, there&lt;/p>".</p><p>So you can start by doing this. Well, not the boring bits. Let
+<strong>phpspec</strong> take care of the boring stuff for you. You just need to tell
+<strong>phpspec</strong> you will be working on the Markdown class.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ bin/phpspec desc Markdown
+Specification <span style=color:#66d9ef>for</span> Markdown created in spec.
+</code></pre></div><p>You can also specify a fully qualified class name. Don&rsquo;t forget that if
+you use backslashes you need to pass the class name inside double
+quotes. Alternatively you could use forward slashes and skip the quotes.
+<strong>phpspec</strong> will create the folder structure following PSR standards.</p><p>Ok. What have you just done? <strong>phpspec</strong> has created the spec for you!
+You can navigate to the spec folder and see the spec there:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+
+<span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
+
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>Markdown</span>;
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>PhpSpec\ObjectBehavior</span>;
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MarkdownSpec</span> <span style=color:#66d9ef>extends</span> <span style=color:#a6e22e>ObjectBehavior</span>
+{
+    <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>it_is_initializable</span>()
+    {
+        $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>shouldHaveType</span>(<span style=color:#a6e22e>Markdown</span><span style=color:#f92672>::</span><span style=color:#a6e22e>class</span>);
+    }
+}
+</code></pre></div><p>So what do you have here? Your spec extends the special <code>ObjectBehavior</code>
+class. This class is special, because it gives you the ability to call
+all the methods of the class you are describing and match the result of
+the operations against your expectations.</p><h2 id=examples>Examples</h2><p>The object behavior is made up of examples. Examples are encased in
+public methods, started with <code>it_</code> or <code>its_</code>.</p><p><strong>phpspec</strong> searches for these methods in your specification to run.</p><p>Why are underscores used in example names?
+<code>just_because_its_much_easier_to_read</code> than
+<code>someLongCamelCasingLikeThat</code>.</p><h2 id=specifying-behaviour>Specifying behaviour</h2><p>Now we are ready to move on. Let&rsquo;s update that first example to express
+your next intention:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+
+<span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
+
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>PhpSpec\ObjectBehavior</span>;
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MarkdownSpec</span> <span style=color:#66d9ef>extends</span> <span style=color:#a6e22e>ObjectBehavior</span>
+{
+    <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>it_converts_plain_text_to_html_paragraphs</span>()
+    {
+        $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>toHtml</span>(<span style=color:#e6db74>&#34;Hi, there&#34;</span>)<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>shouldReturn</span>(<span style=color:#e6db74>&#34;&lt;p&gt;Hi, there&lt;/p&gt;&#34;</span>);
+    }
+}
+</code></pre></div><p>Here you are telling <strong>phpspec</strong> that your object has a <code>toHtml</code> method.
+You are also telling it that this method should return &ldquo;&lt;p>Hi,
+there&lt;/p>". Now what? Run the specs. You may not believe this, but
+<strong>phpspec</strong> will understand you are describing a class that doesn&rsquo;t
+exist and offer to create it!</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ bin/phpspec run
+
+&gt; spec<span style=color:#ae81ff>\M</span>arkdown
+
+  ✘ it converts plain text to html paragraphs
+      Class Markdown does not exist.
+
+         Do you want me to create it <span style=color:#66d9ef>for</span> you? <span style=color:#f92672>[</span>Y/n<span style=color:#f92672>]</span>
+</code></pre></div><p><strong>phpspec</strong> will then place the empty class in the directory. Run your
+spec again and&mldr; OK, you guessed:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ bin/phpspec run
+
+&gt; spec<span style=color:#ae81ff>\M</span>arkdown
+
+  ✘ it converts plain text to html paragraphs
+      Method Markdown::toHtml<span style=color:#f92672>(</span><span style=color:#f92672>)</span> not found.
+
+         Do you want me to create it <span style=color:#66d9ef>for</span> you? <span style=color:#f92672>[</span>Y/n<span style=color:#f92672>]</span>
+</code></pre></div><p>What you just did was moving fast through the amber state into the red.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Markdown</span>
+{
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>toHtml</span>($argument1)
+    {
+        <span style=color:#75715e>// TODO: write logic here
+</span><span style=color:#75715e></span>    }
+}
+</code></pre></div><p>You got rid of the fatal errors and ugly messages that resulted from
+non-existent classes and methods and went straight into a real failed
+spec:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ bin/phpspec run
+
+&gt; spec<span style=color:#ae81ff>\M</span>arkdown
+
+  ✘ it converts plain text to html paragraphs
+      Expected <span style=color:#e6db74>&#34;&lt;p&gt;Hi, there&lt;/p&gt;&#34;</span>, but got null.
+
+
+<span style=color:#ae81ff>1</span> examples <span style=color:#f92672>(</span><span style=color:#ae81ff>1</span> failed<span style=color:#f92672>)</span>
+284ms
+</code></pre></div><p>You can change the generated specs and classes using
+templates &lt;/cookbook/templates>.</p><p>According to the TDD rules you now have full permission to write code.
+Red means &ldquo;time to add code&rdquo;; red is great! Now you can add just enough
+code to make the spec green, quickly. There will be time to get it
+right, but first just get it green.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Markdown</span>
+{
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>toHtml</span>()
+    {
+        <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;&lt;p&gt;Hi, there&lt;/p&gt;&#34;</span>;
+    }
+}
+</code></pre></div><p>And voilà:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ bin/phpspec run
+
+&gt; spec<span style=color:#ae81ff>\M</span>arkdown
+
+  ✔ it converts plain text to html paragraphs
+
+<span style=color:#ae81ff>1</span> examples <span style=color:#f92672>(</span><span style=color:#ae81ff>1</span> passed<span style=color:#f92672>)</span>
+247ms
+</code></pre></div><p>There are heaps of resources out there already if you would like to read
+more about the TDD/SpecBDD cycle. Here are just a couple for you to look
+at:</p><ol><li><a href=http://www.amazon.com/RSpec-Book-Behaviour-Development-Cucumber/dp/1934356379>The Rspec
+Book</a>
+Development with RSpec, Cucumber, and Friends by David Chelimsky,
+Dave Astels, Zach Dennis, Aslak Hellesøy, Bryan Helmkamp, Dan North</li><li><a href=http://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530>Test Driven Development: By
+Example</a>
+Kent Beck</li></ol><p>In the example here you specified the value the <code>toHtml</code> method should
+return by using one of <strong>phpspec&rsquo;s</strong> matchers. There are several other
+matchers available, you can read more about these in the
+Matchers Cookbook &lt;/cookbook/matchers></p><h2 id=skipping-examples>Skipping examples</h2><p>It may happen that some of your examples will depend on some environment
+requirements. For example, it might need a php extension or a minimal
+php version. In that case, you don&rsquo;t want your examples to fail because
+<strong>phpspec</strong> is unable to run them.</p><p><strong>phpspec</strong> allows to easily skip an example by throwing a
+SkippingException wherever you feel the need for it.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+
+<span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
+
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>PhpSpec\ObjectBehavior</span>;
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>PhpSpec\Exception\Example\SkippingException</span>;
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>RocketSpec</span> <span style=color:#66d9ef>extends</span> <span style=color:#a6e22e>ObjectBehavior</span>
+{
+    <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>it_flies_around_the_moon</span>()
+    {
+        <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span><span style=color:#a6e22e>function_exists</span>(<span style=color:#e6db74>&#39;rocket_launch&#39;</span>)) {
+            <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>SkippingException</span>(
+                <span style=color:#e6db74>&#39;The rocket extension is not installed&#39;</span>
+            );
+        }
+        $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>flyToTheMoon</span>();
+    }
+}
+</code></pre></div><p>An extension is also available to skip examples regarding a
+class/interface was not found. It can be found here:
+<a href=https://github.com/akeneo/PhpSpecSkipExampleExtension>https://github.com/akeneo/PhpSpecSkipExampleExtension</a></p></main><nav></nav><footer><ul><li><a href=https://www.github.com/phpspec/phpspec/edit/master/docs/en/manual/getting-started.md target=_blank>Improve this page</a></li></ul></footer></section></body></html>

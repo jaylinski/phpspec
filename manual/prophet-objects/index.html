@@ -1,0 +1,132 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=description content><meta name=viewport content="width=device-width,initial-scale=1"><title>&#8212; phpspec v6.1</title><link rel=alternate hreflang=en href=http://www.phpspec.net/manual/prophet-objects/><link rel=icon href=/favicon.ico type=image/x-icon><style type=text/css integrity="sha256-7hJdmgAToJMZp17gcOEPUMhzbO9hvPLSs8jqVBYO1Zc=">*,*::before,*::after{box-sizing:border-box}ul[class],ol[class]{padding:0}body,h1,h2,h3,h4,p,ul[class],ol[class],li,figure,figcaption,blockquote,dl,dd{margin:0}body{min-height:100vh;scroll-behavior:smooth;text-rendering:optimizeSpeed;line-height:1.5}ul[class],ol[class]{list-style:none}a:not([class]){text-decoration-skip-ink:auto}img{max-width:100%;display:block}article>*+*{margin-top:1em}input,button,textarea,select{font:inherit}@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}body{color:#414141;font-family:trebuchet ms,serif;background:#fff url(/images/bg.jpg)repeat-x;margin:0}a{color:#111}a:hover{text-decoration:none}h1,h2,h3{color:#333;font-style:italic}h1{font-size:30px;margin-bottom:.8em}h2{font-size:26px;margin-top:.8em;margin-bottom:.6em}p{font-size:15px;line-height:20px;margin-bottom:1em}pre{overflow:auto}table{border-collapse:collapse}table td,table th{border:1px solid rgba(0,0,0,.4);padding:4px 8px;text-align:left}section{max-width:840px;overflow:auto;margin:0 auto;padding:0 15px}main{margin-bottom:5em}footer{color:#777;border-top:1px solid #ccc}footer ul{list-style:none;padding:0}footer a{color:inherit}.nav-main{display:flex;justify-content:space-between;border-bottom:1px solid #c4c4c4;margin:10px 0 2em}.nav-main a{display:block;border-top:5px solid #727272;width:160px;padding:8px 0 10px;text-decoration:none;text-align:center}.nav-main a:hover{border-top-color:#fff}.nav-main ul{display:flex;list-style:none;padding:0}.nav-main .nav-active{color:#000;border-top-color:#000}.highlight pre{border-radius:5px;padding:12px 14px}.home{text-align:center;margin:4em 0}.home img{display:inline}.home h1{color:#4f4f4f;line-height:48px;margin-top:2em}.home h1 em{color:#111}.quickstart{border-top:1px solid #ccc;padding-top:2em}</style></head><body><section><nav class=nav-main><ul class=nav-item-main><li><a href=/>main</a></li><li><a href=/manual/introduction/>phpspec manual</a></li></ul><ul class=nav-item-github><li><a href=https://www.github.com/phpspec/phpspec target=_blank>phpspec repo</a></li><li><a href=https://www.github.com/phpspec/prophecy target=_blank>prophecy repo</a></li></ul></nav><main><h1></h1><h1 id=prophet-objects>Prophet Objects</h1><h2 id=stubs>Stubs</h2><p>You also need your Markdown parser to be able to format text fetched
+from an external source such as a file. You decide to create an
+interface so that you can have different implementations for different
+types of source.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+
+<span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>Markdown</span>;
+
+<span style=color:#66d9ef>interface</span> <span style=color:#a6e22e>Reader</span>
+{
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>getMarkdown</span>();
+}
+</code></pre></div><p>You want to describe a method which has an instance of a Reader as an
+argument. It will call <code>Markdown\Reader::getMarkdown()</code> to get the
+markdown to format. You have not yet written any implementations of
+Reader to pass into the method though. You do not want to get distracted
+by creating an implementation before you can carry on writing the
+parser. Instead we can create a fake version of Reader called a stub and
+tell <strong>phpspec</strong> what <code>Markdown\Reader::getMarkdown()</code> should return.</p><p>You can create a stub by telling <strong>phpspec</strong> that you want it to be a
+double of the Markdown\Reader interface:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+
+<span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
+
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>PhpSpec\ObjectBehavior</span>;
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MarkdownSpec</span> <span style=color:#66d9ef>extends</span> <span style=color:#a6e22e>ObjectBehavior</span>
+{
+    <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>it_converts_text_from_an_external_source</span>($reader)
+    {
+        $reader<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>beADoubleOf</span>(<span style=color:#e6db74>&#39;Markdown\Reader&#39;</span>);
+        $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>toHtmlFromReader</span>($reader)<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>shouldReturn</span>(<span style=color:#e6db74>&#34;&lt;p&gt;Hi, there&lt;/p&gt;&#34;</span>);
+    }
+}
+</code></pre></div><p>At the moment calling <code>Markdown\Reader::getMarkdown()</code> will return null.
+We can tell <strong>phpspec</strong> what we want it to return though.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+
+<span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
+
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>PhpSpec\ObjectBehavior</span>;
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MarkdownSpec</span> <span style=color:#66d9ef>extends</span> <span style=color:#a6e22e>ObjectBehavior</span>
+{
+    <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>it_converts_text_from_an_external_source</span>($reader)
+    {
+        $reader<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>beADoubleOf</span>(<span style=color:#e6db74>&#39;Markdown\Reader&#39;</span>);
+        $reader<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>getMarkdown</span>()<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>willReturn</span>(<span style=color:#e6db74>&#34;Hi, there&#34;</span>);
+
+        $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>toHtmlFromReader</span>($reader)<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>shouldReturn</span>(<span style=color:#e6db74>&#34;&lt;p&gt;Hi, there&lt;/p&gt;&#34;</span>);
+    }
+}
+</code></pre></div><p>Now you can write the code that will get this example to pass. As well
+as refactoring your implementation you should see if you can refactor
+your specs once they are passing. In this case we can tidy it up a bit
+as <strong>phpspec</strong> lets you create the stub in an easier way. If you use a
+typehint, <strong>phpspec</strong> determine the required type of the collaborator:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+
+<span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
+
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>PhpSpec\ObjectBehavior</span>;
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>Markdown\Reader</span>;
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MarkdownSpec</span> <span style=color:#66d9ef>extends</span> <span style=color:#a6e22e>ObjectBehavior</span>
+{
+    <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>it_converts_text_from_an_external_source</span>(<span style=color:#a6e22e>Reader</span> $reader)
+    {
+        $reader<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>getMarkdown</span>()<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>willReturn</span>(<span style=color:#e6db74>&#34;Hi, there&#34;</span>);
+
+        $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>toHtmlFromReader</span>($reader)<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>shouldReturn</span>(<span style=color:#e6db74>&#34;&lt;p&gt;Hi, there&lt;/p&gt;&#34;</span>);
+    }
+}
+</code></pre></div><p><strong>phpspec</strong> 2.* supports the use of @param annotations instead of
+parametric typehints for this purpose. However, this functionality is
+removed in <strong>phpspec</strong> 3.0.</p><h2 id=mocks>Mocks</h2><p>You also need to be able to get your parser to output to somewhere
+instead of just returning the formatted text. Again you create an
+interface:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+
+<span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>Markdown</span>;
+
+<span style=color:#66d9ef>interface</span> <span style=color:#a6e22e>Writer</span>
+{
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>writeText</span>($text);
+}
+</code></pre></div><p>You again pass it to the method but this time the
+<code>Markdown\Writer::writeText($text)</code> method does not return something to
+your parser class. The new method you are going to create on the parser
+will not return anything either. Instead it is going to give the
+formatted text to the Markdown\Writer so you want to be able to give an
+example of what that formatted text should be. You can do this using a
+mock, the mock gets created in the same way as the stub. This time you
+tell it to expect <code>Markdown\Writer::writeText($text)</code> to get called with
+a particular value:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+
+<span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
+
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>PhpSpec\ObjectBehavior</span>;
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>Markdown\Writer</span>;
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MarkdownSpec</span> <span style=color:#66d9ef>extends</span> <span style=color:#a6e22e>ObjectBehavior</span>
+{
+    <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>it_outputs_converted_text</span>(<span style=color:#a6e22e>Writer</span> $writer)
+    {
+        $writer<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>writeText</span>(<span style=color:#e6db74>&#34;&lt;p&gt;Hi, there&lt;/p&gt;&#34;</span>)<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>shouldBeCalled</span>();
+
+        $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>outputHtml</span>(<span style=color:#e6db74>&#34;Hi, there&#34;</span>, $writer);
+    }
+}
+</code></pre></div><p>Now if the method is not called with that value then the example will
+fail.</p><p>The shouldBeCalled method should be used <strong>before</strong> any SUS (System
+Under Spec) calls in order to make an example fail if other mock methods
+are invoked. In the previous example, if other methods than writeText
+are called in outputHTML (that is the SUS) function, the test will fail.
+PHPSpec won&rsquo;t prevent you to use shouldBeCalled <strong>after</strong> SUS calls:
+this is not recommended as shouldBeCalled would behave as
+shouldHaveBeenCalled. To understand how shouldHaveBeenCalled behaves,
+please continue reading.</p><h2 id=spies>Spies</h2><p>Instead of using a mock you could use a spy. The difference is that you
+check what happened after the object&rsquo;s behaviour has happened:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+
+<span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
+
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>PhpSpec\ObjectBehavior</span>;
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>Markdown\Writer</span>;
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MarkdownSpec</span> <span style=color:#66d9ef>extends</span> <span style=color:#a6e22e>ObjectBehavior</span>
+{
+    <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>it_outputs_converted_text</span>(<span style=color:#a6e22e>Writer</span> $writer)
+    {
+        $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>outputHtml</span>(<span style=color:#e6db74>&#34;Hi, there&#34;</span>, $writer);
+
+        $writer<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>writeText</span>(<span style=color:#e6db74>&#34;&lt;p&gt;Hi, there&lt;/p&gt;&#34;</span>)<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>shouldHaveBeenCalled</span>();
+    }
+}
+</code></pre></div><p>The difference is in behaviour: when using spies, you will not be forced
+to check every call that happens on double object</p></main><nav></nav><footer><ul><li><a href=https://www.github.com/phpspec/phpspec/edit/master/docs/en/manual/prophet-objects.md target=_blank>Improve this page</a></li></ul></footer></section></body></html>
