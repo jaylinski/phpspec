@@ -1,4 +1,4 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta name=description content><meta name=viewport content="width=device-width,initial-scale=1"><title>Matchers &#8212; phpspec v6.1</title><link rel=alternate hreflang=en href=https://jaylinski.github.io/phpspec/cookbook/matchers/><link rel=icon href=https://jaylinski.github.io/phpspec/favicon.ico type=image/x-icon><link rel=stylesheet href=/phpspec/styles.min.3412609840f0f481525b1dfbc6a587423e0947a208626de5523b07aa54479ca9.css type=text/css></head><body><section><nav class=nav-main><ul><li><a href=/phpspec/>main</a></li><li><a href=/phpspec/manual/introduction/>phpspec manual</a></li></ul><ul><li><a href=https://www.github.com/phpspec/phpspec target=_blank>phpspec repo</a></li><li><a href=https://www.github.com/phpspec/prophecy target=_blank>prophecy repo</a></li></ul></nav></section><section class=flex><aside><div class=nav-sidebar-headline><h3 class=h-chapter>Chapters</h3><button>Menu</button></div><nav class=nav-sidebar><ul><li><a href=/phpspec/manual/introduction/>Introduction</a><nav id=TableOfContents><ol><li><a href=#specbdd-with-phpspec>SpecBDD with phpspec</a></li><li><a href=#specbdd-and-tdd>SpecBDD and TDD</a></li><li><a href=#specbdd-and-storybdd>SpecBDD and StoryBDD</a></li></ol></nav></li><li><a href=/phpspec/manual/installation/>Installation</a><nav id=TableOfContents><ol><li><a href=#installation-process>Installation process:</a></li><li><a href=#method-1-composer-command>Method \#1 (Composer command):</a></li><li><a href=#method-2-composer-config-file>Method \#2 (Composer config file):</a></li><li><a href=#result>Result:</a></li></ol></nav></li><li><a href=/phpspec/manual/getting-started/>Getting Started</a><nav id=TableOfContents><ol><li><a href=#examples>Examples</a></li><li><a href=#specifying-behaviour>Specifying behaviour</a></li><li><a href=#skipping-examples>Skipping examples</a></li></ol></nav></li><li><a href=/phpspec/manual/prophet-objects/>Prophet Objects</a><nav id=TableOfContents><ol><li><a href=#stubs>Stubs</a></li><li><a href=#mocks>Mocks</a></li><li><a href=#spies>Spies</a></li></ol></nav></li><li><a href=/phpspec/manual/let-and-letgo/>Let and Let Go</a><nav id=TableOfContents></nav></li><li><a href=/phpspec/manual/upgrading-to-phpspec-6/>Upgrading to phpspec 6</a><nav id=TableOfContents></nav></li><li><a href=/phpspec/manual/upgrading-to-phpspec-5/>Upgrading to phpspec 5</a><nav id=TableOfContents></nav></li><li><a href=/phpspec/manual/upgrading-to-phpspec-4/>Upgrading to phpspec 4</a><nav id=TableOfContents><ol><li><a href=#upgrading-for-users>Upgrading for Users</a></li><li><a href=#upgrading-for-extension-authors>Upgrading for Extension Authors</a></li></ol></nav></li><li><a href=/phpspec/manual/upgrading-to-phpspec-3/>Upgrading to phpspec 3</a><nav id=TableOfContents><ol><li><a href=#upgrading-for-users>Upgrading for Users</a></li><li><a href=#upgrading-for-extension-authors>Upgrading for Extension Authors</a></li></ol></nav></li></ul><hr><ul><li><a href=/phpspec/cookbook/configuration/>Configuration</a><nav id=TableOfContents><ol><li><a href=#psr-4>PSR-4</a></li><li><a href=#spec-and-source-locations>Spec and source locations</a></li><li><a href=#formatter>Formatter</a></li><li><a href=#options>Options</a></li><li><a href=#extensions>Extensions</a></li><li><a href=#custom-matchers>Custom matchers</a></li><li><a href=#bootstrapping>Bootstrapping</a></li></ol></nav></li><li><a href=/phpspec/cookbook/console/>Running phpspec</a><nav id=TableOfContents><ol><li><a href=#describe-command>Describe Command</a></li><li><a href=#run-command>Run Command</a></li></ol></nav></li><li><a href=/phpspec/cookbook/construction/>Object Construction</a><nav id=TableOfContents><ol><li><a href=#using-the-constructor>Using the Constructor</a></li><li><a href=#using-a-factory-method>Using a Factory Method</a></li><li><a href=#overriding>Overriding</a></li></ol></nav></li><li class=nav-active><a href=/phpspec/cookbook/matchers/>Matchers</a><nav id=TableOfContents><ol><li><a href=#identity-matcher>Identity Matcher</a></li><li><a href=#comparison-matcher>Comparison Matcher</a></li><li><a href=#approximately-matcher>Approximately Matcher</a></li><li><a href=#throw-matcher>Throw Matcher</a></li><li><a href=#trigger-matcher>Trigger Matcher</a></li><li><a href=#type-matcher>Type Matcher</a></li><li><a href=#objectstate-matcher>ObjectState Matcher</a></li><li><a href=#count-matcher>Count Matcher</a></li><li><a href=#scalar-matcher>Scalar Matcher</a></li><li><a href=#iterablecontain-matcher>IterableContain Matcher</a></li><li><a href=#iterablekeywithvalue-matcher>IterableKeyWithValue Matcher</a></li><li><a href=#iterablekey-matcher>IterableKey Matcher</a></li><li><a href=#iterateas-matcher>IterateAs Matcher</a></li><li><a href=#iteratelike-matcher>IterateLike Matcher</a></li><li><a href=#startiteratingas-matcher>StartIteratingAs Matcher</a></li><li><a href=#stringcontain-matcher>StringContain Matcher</a></li><li><a href=#stringstart-matcher>StringStart Matcher</a></li><li><a href=#stringend-matcher>StringEnd Matcher</a></li><li><a href=#stringregex-matcher>StringRegex Matcher</a></li><li><a href=#inline-matcher>Inline Matcher</a></li></ol></nav></li><li><a href=/phpspec/cookbook/templates/>Templates</a><nav id=TableOfContents><ol><li><a href=#overriding-templates>Overriding templates</a></li><li><a href=#parameters>Parameters</a></li></ol></nav></li><li><a href=/phpspec/cookbook/extensions/>Extensions</a><nav id=TableOfContents><ol><li><a href=#installation>Installation</a></li><li><a href=#configuration>Configuration</a></li><li><a href=#example-extensions>Example extensions</a></li></ol></nav></li><li><a href=/phpspec/cookbook/wrapped-objects/>Working with Wrapped Objects</a><nav id=TableOfContents></nav></li></ul></nav></aside><main><h1>Matchers</h1><p>You use matchers in <strong>phpspec</strong> to describe how an object should behave.
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=description content><meta name=viewport content="width=device-width,initial-scale=1"><title>Matchers &#8212; phpspec v6.1</title><link rel=alternate hreflang=en href=https://jaylinski.github.io/phpspec/cookbook/matchers/><link rel=icon href=https://jaylinski.github.io/phpspec/favicon.ico type=image/x-icon><link rel=stylesheet href=/phpspec/styles.min.3412609840f0f481525b1dfbc6a587423e0947a208626de5523b07aa54479ca9.css type=text/css></head><body><section><nav class=nav-main><ul><li><a href=/phpspec/>main</a></li><li><a href=/phpspec/manual/introduction/>phpspec manual</a></li></ul><ul><li><a href=https://www.github.com/phpspec/phpspec target=_blank>phpspec repo</a></li><li><a href=https://www.github.com/phpspec/prophecy target=_blank>prophecy repo</a></li></ul></nav></section><section class=flex><aside><div class=nav-sidebar-headline><h3 class=h-chapter>Chapters</h3><button>Menu</button></div><nav class=nav-sidebar><ul><li><a href=/phpspec/manual/introduction/>Introduction</a><nav id=TableOfContents><ol><li><a href=#specbdd-with-phpspec>SpecBDD with phpspec</a></li><li><a href=#specbdd-and-tdd>SpecBDD and TDD</a></li><li><a href=#specbdd-and-storybdd>SpecBDD and StoryBDD</a></li></ol></nav></li><li><a href=/phpspec/manual/installation/>Installation</a><nav id=TableOfContents><ol><li><a href=#installation-process>Installation process:</a></li><li><a href=#method-1-composer-command>Method #1 (Composer command):</a></li><li><a href=#method-2-composer-config-file>Method #2 (Composer config file):</a></li><li><a href=#result>Result:</a></li></ol></nav></li><li><a href=/phpspec/manual/getting-started/>Getting Started</a><nav id=TableOfContents><ol><li><a href=#examples>Examples</a></li><li><a href=#specifying-behaviour>Specifying behaviour</a></li><li><a href=#skipping-examples>Skipping examples</a></li></ol></nav></li><li><a href=/phpspec/manual/prophet-objects/>Prophet Objects</a><nav id=TableOfContents><ol><li><a href=#stubs>Stubs</a></li><li><a href=#mocks>Mocks</a></li><li><a href=#spies>Spies</a></li></ol></nav></li><li><a href=/phpspec/manual/let-and-letgo/>Let and Let Go</a><nav id=TableOfContents></nav></li><li><a href=/phpspec/manual/upgrading-to-phpspec-7/>Upgrading to phpspec 7</a><nav id=TableOfContents></nav></li><li><a href=/phpspec/manual/upgrading-to-phpspec-6/>Upgrading to phpspec 6</a><nav id=TableOfContents></nav></li><li><a href=/phpspec/manual/upgrading-to-phpspec-5/>Upgrading to phpspec 5</a><nav id=TableOfContents></nav></li><li><a href=/phpspec/manual/upgrading-to-phpspec-4/>Upgrading to phpspec 4</a><nav id=TableOfContents><ol><li><a href=#upgrading-for-users>Upgrading for Users</a></li><li><a href=#upgrading-for-extension-authors>Upgrading for Extension Authors</a></li></ol></nav></li><li><a href=/phpspec/manual/upgrading-to-phpspec-3/>Upgrading to phpspec 3</a><nav id=TableOfContents><ol><li><a href=#upgrading-for-users>Upgrading for Users</a></li><li><a href=#upgrading-for-extension-authors>Upgrading for Extension Authors</a></li></ol></nav></li></ul><hr><ul><li><a href=/phpspec/cookbook/configuration/>Configuration</a><nav id=TableOfContents><ol><li><a href=#psr-4>PSR-4</a></li><li><a href=#spec-and-source-locations>Spec and source locations</a></li><li><a href=#formatter>Formatter</a></li><li><a href=#options>Options</a></li><li><a href=#extensions>Extensions</a></li><li><a href=#custom-matchers>Custom matchers</a></li><li><a href=#bootstrapping>Bootstrapping</a></li></ol></nav></li><li><a href=/phpspec/cookbook/console/>Running phpspec</a><nav id=TableOfContents><ol><li><a href=#describe-command>Describe Command</a></li><li><a href=#run-command>Run Command</a></li></ol></nav></li><li><a href=/phpspec/cookbook/construction/>Object Construction</a><nav id=TableOfContents><ol><li><a href=#using-the-constructor>Using the Constructor</a></li><li><a href=#using-a-factory-method>Using a Factory Method</a></li><li><a href=#overriding>Overriding</a></li></ol></nav></li><li class=nav-active><a href=/phpspec/cookbook/matchers/>Matchers</a><nav id=TableOfContents><ol><li><a href=#identity-matcher>Identity Matcher</a></li><li><a href=#comparison-matcher>Comparison Matcher</a></li><li><a href=#approximately-matcher>Approximately Matcher</a></li><li><a href=#throw-matcher>Throw Matcher</a></li><li><a href=#trigger-matcher>Trigger Matcher</a></li><li><a href=#type-matcher>Type Matcher</a></li><li><a href=#objectstate-matcher>ObjectState Matcher</a></li><li><a href=#count-matcher>Count Matcher</a></li><li><a href=#scalar-matcher>Scalar Matcher</a></li><li><a href=#iterablecontain-matcher>IterableContain Matcher</a></li><li><a href=#iterablekeywithvalue-matcher>IterableKeyWithValue Matcher</a></li><li><a href=#iterablekey-matcher>IterableKey Matcher</a></li><li><a href=#iterateas-matcher>IterateAs Matcher</a></li><li><a href=#iteratelike-matcher>IterateLike Matcher</a></li><li><a href=#startiteratingas-matcher>StartIteratingAs Matcher</a></li><li><a href=#stringcontain-matcher>StringContain Matcher</a></li><li><a href=#stringstart-matcher>StringStart Matcher</a></li><li><a href=#stringend-matcher>StringEnd Matcher</a></li><li><a href=#stringregex-matcher>StringRegex Matcher</a></li><li><a href=#inline-matcher>Inline Matcher</a></li></ol></nav></li><li><a href=/phpspec/cookbook/templates/>Templates</a><nav id=TableOfContents><ol><li><a href=#overriding-templates>Overriding templates</a></li><li><a href=#parameters>Parameters</a></li></ol></nav></li><li><a href=/phpspec/cookbook/extensions/>Extensions</a><nav id=TableOfContents><ol><li><a href=#installation>Installation</a></li><li><a href=#configuration>Configuration</a></li><li><a href=#example-extensions>Example extensions</a></li></ol></nav></li><li><a href=/phpspec/cookbook/wrapped-objects/>Working with Wrapped Objects</a><nav id=TableOfContents></nav></li></ul></nav></aside><main><h1>Matchers</h1><p>You use matchers in <strong>phpspec</strong> to describe how an object should behave.
 They are like assertions in xUnit but with a focus on specifying
 behaviour instead of verifying output. You use the matchers prefixed by
 <code>should</code> or <code>shouldNot</code> as appropriate.</p><p><strong>phpspec</strong> has 14 built-in matchers, described in more detail here.
@@ -6,7 +6,7 @@ Many of these matchers have aliases which you can use to make your
 specifications easy to read.</p><p>Custom matchers classes can be registered in
 <a href=/phpspec/cookbook/configuration/>configuration</a>.</p><h2 id=identity-matcher>Identity Matcher</h2><p>If you want to specify that a method returns a specific value, you can
 use the Identity matcher. It compares the result using the identity
-operator: <code>===</code>.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+operator: <code>===</code>.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -26,7 +26,7 @@ operator: <code>===</code>.</p><div class=highlight><pre style=color:#f8f8f2;bac
 There is no difference in how they work, this lets you choose the one
 which makes your specification easier to read.</p><h2 id=comparison-matcher>Comparison Matcher</h2><p>The Comparison matcher is like the Identity matcher. The difference is
 that is uses the comparison operator <code>==</code>. So it is not as strict and
-follows the PHP rules for loose type comparison.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+follows the PHP rules for loose type comparison.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -42,7 +42,7 @@ follows the PHP rules for loose type comparison.</p><div class=highlight><pre st
 </code></pre></div><p>Using <code>shouldBeLike</code> it does not matter whether <code>StarWars::getRating()</code>
 returns an integer or a string. The spec will pass for 5 and &ldquo;5&rdquo;.</p><h2 id=approximately-matcher>Approximately Matcher</h2><p>If you want to specify that a method returns a value that approximates
 to a certain precision the given value, you can use the Approximately
-matcher.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+matcher.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -62,7 +62,7 @@ matcher.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#2728
 equivalent. There is no difference in how they work, this lets you
 choose the one which makes your specification easier to read.</p><h2 id=throw-matcher>Throw Matcher</h2><p>You can describe an object throwing an exception using the Throw
 matcher. You use the Throw matcher by calling it straight from <code>$this</code>,
-making the example easier to read.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+making the example easier to read.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -75,7 +75,7 @@ making the example easier to read.</p><div class=highlight><pre style=color:#f8f
         $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>shouldThrow</span>(<span style=color:#e6db74>&#39;\InvalidArgumentException&#39;</span>)<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>duringSetRating</span>(<span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>);
     }
 }
-</code></pre></div><p>You can also write this as:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+</code></pre></div><p>You can also write this as:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -90,7 +90,7 @@ making the example easier to read.</p><div class=highlight><pre style=color:#f8f
 }
 </code></pre></div><p>The first argument of <code>during</code> is the method name and the second one is
 an array of values passed to the method.</p><p>You may want to specify the message of the exception. You can do this by
-passing an exception object to shouldThrow:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+passing an exception object to shouldThrow:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -105,7 +105,7 @@ passing an exception object to shouldThrow:</p><div class=highlight><pre style=c
 }
 </code></pre></div><p>If you want to use the Throw matcher to check for exceptions thrown
 during object instantiation you can use the <code>duringInstantiation</code>
-method.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+method.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -119,7 +119,7 @@ method.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#27282
         $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>shouldThrow</span>(<span style=color:#e6db74>&#39;\InvalidArgumentException&#39;</span>)<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>duringInstantiation</span>();
     }
 }
-</code></pre></div><p>You can also use the Throw matcher with named constructors.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+</code></pre></div><p>You can also use the Throw matcher with named constructors.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -133,7 +133,7 @@ method.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#27282
         $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>shouldThrow</span>(<span style=color:#e6db74>&#39;\InvalidArgumentException&#39;</span>)<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>duringInstantiation</span>();
     }
 }
-</code></pre></div><h2 id=trigger-matcher>Trigger Matcher</h2><p>Let&rsquo;s say you have the following class and a method which is deprecated</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+</code></pre></div><h2 id=trigger-matcher>Trigger Matcher</h2><p>Let&rsquo;s say you have the following class and a method which is deprecated</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Movie</span>
 {
@@ -146,7 +146,7 @@ method.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#27282
 }
 </code></pre></div><p>You can describe an object triggering an error using the Trigger
 matcher. You use the Trigger matcher by calling it straight from
-<code>$this</code>, making the example easier to read.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+<code>$this</code>, making the example easier to read.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -160,7 +160,7 @@ matcher. You use the Trigger matcher by calling it straight from
     }
 }
 </code></pre></div><p>You may want to specify the message of the error. You can do this by
-adding a string parameter to the shouldTrigger method :</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+adding a string parameter to the shouldTrigger method :</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -177,7 +177,7 @@ adding a string parameter to the shouldTrigger method :</p><div class=highlight>
 in the Throw section, or use the instantiation mechanisms (such as
 duringInstantiation, &mldr; etc)</p></blockquote><h2 id=type-matcher>Type Matcher</h2><p>You can specify the type of the object you are describing with the Type
 matcher. You can also use this matcher to check that a class implements
-an interface or that it extends a class.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+an interface or that it extends a class.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -196,7 +196,7 @@ an interface or that it extends a class.</p><div class=highlight><pre style=colo
 </code></pre></div><p>All four matcher methods are equivalent and will serve to describe if
 the object is a <code>Movie</code> or not.</p><h2 id=objectstate-matcher>ObjectState Matcher</h2><p>The ObjectState matcher lets you check the state of an object by calling
 methods on it. These methods should start with <code>is*</code> or <code>has*</code> and
-return a boolean.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+return a boolean.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -217,7 +217,7 @@ return a boolean.</p><div class=highlight><pre style=color:#f8f8f2;background-co
     }
 }
 </code></pre></div><p>The spec will pass if the object has <code>isAvailableOnCinemas</code> and
-<code>hasSoundtrack</code> methods which both return true:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+<code>hasSoundtrack</code> methods which both return true:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Movie</span>
 {
@@ -233,7 +233,7 @@ return a boolean.</p><div class=highlight><pre style=color:#f8f8f2;background-co
 }
 </code></pre></div><h2 id=count-matcher>Count Matcher</h2><p>You can check the number of items in the return value using the Count
 matcher. The returned value could be an array or an object that
-implements the <code>\Countable</code> or <code>\Traversable</code> interface.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+implements the <code>\Countable</code> or <code>\Traversable</code> interface.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -248,7 +248,7 @@ implements the <code>\Countable</code> or <code>\Traversable</code> interface.</
 }
 </code></pre></div><h2 id=scalar-matcher>Scalar Matcher</h2><p>To specify that the value returned by a method should be a specific
 primitive type you can use the Scalar matcher. It&rsquo;s like using one of
-the <code>is_*</code> functions, e.g, <code>is_bool</code>, <code>is_integer</code>, <code>is_float</code>, etc.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+the <code>is_*</code> functions, e.g, <code>is_bool</code>, <code>is_integer</code>, <code>is_float</code>, etc.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -268,7 +268,7 @@ the <code>is_*</code> functions, e.g, <code>is_bool</code>, <code>is_integer</co
 }
 </code></pre></div><h2 id=iterablecontain-matcher>IterableContain Matcher</h2><p>You can specify that a method should return an array or an implementor
 of <code>\Traversable</code> that contains a given value with the IterableContain
-matcher. <strong>phpspec</strong> matches the value by identity (<code>===</code>).</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+matcher. <strong>phpspec</strong> matches the value by identity (<code>===</code>).</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -284,7 +284,7 @@ matcher. <strong>phpspec</strong> matches the value by identity (<code>===</code
 </code></pre></div><h2 id=iterablekeywithvalue-matcher>IterableKeyWithValue Matcher</h2><p>This matcher lets you assert a specific value for a specific key on a
 method that returns an array or an implementor of <code>\ArrayAccess</code> or
 <code>\Traversable</code>. <strong>phpspec</strong> matches both the key and value by identity
-(<code>===</code>).</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+(<code>===</code>).</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -300,7 +300,7 @@ method that returns an array or an implementor of <code>\ArrayAccess</code> or
 </code></pre></div><h2 id=iterablekey-matcher>IterableKey Matcher</h2><p>You can specify that a method should return an array or an object
 implementing <code>\ArrayAccess</code> or <code>\Traversable</code> with a specific key using
 the IterableKey matcher. <strong>phpspec</strong> matches the key by identity
-(<code>===</code>).</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+(<code>===</code>).</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -316,7 +316,7 @@ the IterableKey matcher. <strong>phpspec</strong> matches the key by identity
 </code></pre></div><h2 id=iterateas-matcher>IterateAs Matcher</h2><p>This matcher lets you specify that a method should return an array or an
 object implementing <code>\Traversable</code> that iterates just as the argument
 you passed to it. <strong>phpspec</strong> matches both the key and the value by
-identity (<code>===</code>).</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+identity (<code>===</code>).</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -335,7 +335,7 @@ is no difference in how they work, this lets you choose the one which
 makes your specification easier to read.</p><h2 id=iteratelike-matcher>IterateLike Matcher</h2><p>This matcher lets you specify that a method should return an array or an
 object implementing <code>\Traversable</code> that iterates equal to the arguments
 you passed to it. <strong>phpspec</strong> matches both the key and the element by
-value (<code>==</code>).</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+value (<code>==</code>).</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -354,7 +354,7 @@ is no difference in how they work, this lets you choose the one which
 makes your specification easier to read.</p><h2 id=startiteratingas-matcher>StartIteratingAs Matcher</h2><p>This matcher lets you specify that a method should return an array or an
 object implementing <code>\Traversable</code> that starts iterating just as the
 argument you passed to it. <strong>phpspec</strong> matches both the key and the
-value by identity (<code>===</code>).</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+value by identity (<code>===</code>).</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -371,7 +371,7 @@ value by identity (<code>===</code>).</p><div class=highlight><pre style=color:#
 </code></pre></div><p>Both of these ways of using the StartIteratingAs matcher are equivalent.
 There is no difference in how they work, this lets you choose the one
 which makes your specification easier to read.</p><h2 id=stringcontain-matcher>StringContain Matcher</h2><p>The StringContain matcher lets you specify that a method should return a
-string containing a given substring. This matcher is case sensitive.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+string containing a given substring. This matcher is case sensitive.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -385,7 +385,7 @@ string containing a given substring. This matcher is case sensitive.</p><div cla
     }
 }
 </code></pre></div><h2 id=stringstart-matcher>StringStart Matcher</h2><p>The StringStart matcher lets you specify that a method should return a
-string starting with a given substring.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+string starting with a given substring.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -399,7 +399,7 @@ string starting with a given substring.</p><div class=highlight><pre style=color
     }
 }
 </code></pre></div><h2 id=stringend-matcher>StringEnd Matcher</h2><p>The StringEnd matcher lets you specify that a method should return a
-string ending with a given substring.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+string ending with a given substring.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -413,7 +413,7 @@ string ending with a given substring.</p><div class=highlight><pre style=color:#
     }
 }
 </code></pre></div><h2 id=stringregex-matcher>StringRegex Matcher</h2><p>The StringRegex matcher lets you specify that a method should return a
-string matching a given regular expression.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+string matching a given regular expression.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -427,7 +427,7 @@ string matching a given regular expression.</p><div class=highlight><pre style=c
     }
 }
 </code></pre></div><h2 id=inline-matcher>Inline Matcher</h2><p>You can create custom matchers by providing them in <code>getMatchers</code>
-method.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+method.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
@@ -454,7 +454,7 @@ method.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#27282
     }
 }
 </code></pre></div><p>In order to print a more verbose error message your inline matcher
-should throw `FailureException`:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#75715e>&lt;?php</span>
+should throw `FailureException`:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
 
 <span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
 
