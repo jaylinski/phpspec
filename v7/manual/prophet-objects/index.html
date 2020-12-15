@@ -1,0 +1,134 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=description content><meta name=viewport content="width=device-width,initial-scale=1"><link rel=canonical href=/phpspec/v7/manual/prophet-objects/><title>Prophet Objects &#8212; phpspec</title><link rel=alternate hreflang=en href=https://jaylinski.github.io/phpspec/v7/manual/prophet-objects/><link rel=icon href=https://jaylinski.github.io/phpspec/favicon.ico type=image/x-icon><link rel=stylesheet href=/phpspec/styles.min.a96f39663f75bb4d9452426e8b90189e17009551917678010a9dec08c0ae1132.css type=text/css></head><body><section><nav class=nav-main><ul><li><a href=/phpspec/>main</a></li><li><a href=/phpspec/v7/manual/introduction/ class=nav-active>phpspec manual</a></li></ul><ul><li><a href=https://www.github.com/phpspec/phpspec target=_blank>phpspec repo</a></li><li><a href=https://www.github.com/phpspec/prophecy target=_blank>prophecy repo</a></li></ul></nav></section><section class=flex><aside><div class=nav-sidebar-headline><h3 class=h-chapter>Chapters</h3><button>Menu</button></div><nav class=nav-sidebar><section class=nav-sidebar-main><ul><li><a href=/phpspec/v7/manual/introduction/>Introduction</a><nav id=TableOfContents><ol><li><a href=#specbdd-with-phpspec>SpecBDD with phpspec</a></li><li><a href=#specbdd-and-tdd>SpecBDD and TDD</a></li><li><a href=#specbdd-and-storybdd>SpecBDD and StoryBDD</a></li></ol></nav></li><li><a href=/phpspec/v7/manual/installation/>Installation</a><nav id=TableOfContents><ol><li><a href=#installation-process>Installation process:</a></li><li><a href=#method-1-composer-command>Method #1 (Composer command):</a></li><li><a href=#method-2-composer-config-file>Method #2 (Composer config file):</a></li><li><a href=#result>Result:</a></li></ol></nav></li><li><a href=/phpspec/v7/manual/getting-started/>Getting Started</a><nav id=TableOfContents><ol><li><a href=#examples>Examples</a></li><li><a href=#specifying-behaviour>Specifying behaviour</a></li><li><a href=#skipping-examples>Skipping examples</a></li></ol></nav></li><li class=nav-active><a href=/phpspec/v7/manual/prophet-objects/>Prophet Objects</a><nav id=TableOfContents><ol><li><a href=#stubs>Stubs</a></li><li><a href=#mocks>Mocks</a></li><li><a href=#spies>Spies</a></li></ol></nav></li><li><a href=/phpspec/v7/manual/let-and-letgo/>Let and Let Go</a><nav id=TableOfContents></nav></li><li><a href=/phpspec/v7/manual/upgrading-to-phpspec-7/>Upgrading to phpspec 7</a><nav id=TableOfContents></nav></li><li><a href=/phpspec/v7/manual/upgrading-to-phpspec-6/>Upgrading to phpspec 6</a><nav id=TableOfContents></nav></li><li><a href=/phpspec/v7/manual/upgrading-to-phpspec-5/>Upgrading to phpspec 5</a><nav id=TableOfContents></nav></li><li><a href=/phpspec/v7/manual/upgrading-to-phpspec-4/>Upgrading to phpspec 4</a><nav id=TableOfContents><ol><li><a href=#upgrading-for-users>Upgrading for Users</a></li><li><a href=#upgrading-for-extension-authors>Upgrading for Extension Authors</a></li></ol></nav></li></ul><hr><ul><li><a href=/phpspec/v7/cookbook/configuration/>Configuration</a><nav id=TableOfContents><ol><li><a href=#psr-4>PSR-4</a></li><li><a href=#spec-and-source-locations>Spec and source locations</a></li><li><a href=#formatter>Formatter</a></li><li><a href=#options>Options</a></li><li><a href=#extensions>Extensions</a></li><li><a href=#custom-matchers>Custom matchers</a></li><li><a href=#bootstrapping>Bootstrapping</a></li></ol></nav></li><li><a href=/phpspec/v7/cookbook/console/>Running phpspec</a><nav id=TableOfContents><ol><li><a href=#describe-command>Describe Command</a></li><li><a href=#run-command>Run Command</a></li></ol></nav></li><li><a href=/phpspec/v7/cookbook/construction/>Object Construction</a><nav id=TableOfContents><ol><li><a href=#using-the-constructor>Using the Constructor</a></li><li><a href=#using-a-factory-method>Using a Factory Method</a></li><li><a href=#overriding>Overriding</a></li></ol></nav></li><li><a href=/phpspec/v7/cookbook/matchers/>Matchers</a><nav id=TableOfContents><ol><li><a href=#identity-matcher>Identity Matcher</a></li><li><a href=#comparison-matcher>Comparison Matcher</a></li><li><a href=#approximately-matcher>Approximately Matcher</a></li><li><a href=#throw-matcher>Throw Matcher</a></li><li><a href=#trigger-matcher>Trigger Matcher</a></li><li><a href=#type-matcher>Type Matcher</a></li><li><a href=#objectstate-matcher>ObjectState Matcher</a></li><li><a href=#count-matcher>Count Matcher</a></li><li><a href=#scalar-matcher>Scalar Matcher</a></li><li><a href=#iterablecontain-matcher>IterableContain Matcher</a></li><li><a href=#iterablekeywithvalue-matcher>IterableKeyWithValue Matcher</a></li><li><a href=#iterablekey-matcher>IterableKey Matcher</a></li><li><a href=#iterateas-matcher>IterateAs Matcher</a></li><li><a href=#iteratelike-matcher>IterateLike Matcher</a></li><li><a href=#startiteratingas-matcher>StartIteratingAs Matcher</a></li><li><a href=#stringcontain-matcher>StringContain Matcher</a></li><li><a href=#stringstart-matcher>StringStart Matcher</a></li><li><a href=#stringend-matcher>StringEnd Matcher</a></li><li><a href=#stringregex-matcher>StringRegex Matcher</a></li><li><a href=#inline-matcher>Inline Matcher</a></li></ol></nav></li><li><a href=/phpspec/v7/cookbook/templates/>Templates</a><nav id=TableOfContents><ol><li><a href=#overriding-templates>Overriding templates</a></li><li><a href=#parameters>Parameters</a></li></ol></nav></li><li><a href=/phpspec/v7/cookbook/extensions/>Extensions</a><nav id=TableOfContents><ol><li><a href=#installation>Installation</a></li><li><a href=#configuration>Configuration</a></li><li><a href=#example-extensions>Example extensions</a></li></ol></nav></li><li><a href=/phpspec/v7/cookbook/wrapped-objects/>Working with Wrapped Objects</a><nav id=TableOfContents></nav></li></ul></section><section class=nav-sidebar-version><h3>Version</h3><ul><li class=nav-version-active><a href=/phpspec/v7/manual/introduction/>v7&nbsp;(<strong>latest</strong>)</a></li><li><a href=/phpspec/v6/manual/introduction/>v6</a></li></ul></section></nav></aside><main><h1>Prophet Objects</h1><h2 id=stubs>Stubs</h2><p>You also need your <em>Markdown</em> parser to be able to format text fetched
+from an external source such as a file. You decide to create an
+interface so that you can have different implementations for different
+types of source.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
+
+<span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>Markdown</span>;
+
+<span style=color:#66d9ef>interface</span> <span style=color:#a6e22e>Reader</span>
+{
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>getMarkdown</span>();
+}
+</code></pre></div><p>You want to describe a method which has an instance of a <em>Reader</em> as an
+argument. It will call <code>Markdown\Reader::getMarkdown()</code> to get the
+markdown to format. You have not yet written any implementations of
+Reader to pass into the method though. You do not want to get distracted
+by creating an implementation before you can carry on writing the
+parser. Instead we can create a fake version of Reader called a stub and
+tell <strong>phpspec</strong> what <code>Markdown\Reader::getMarkdown()</code> should return.</p><p>You can create a stub by telling <strong>phpspec</strong> that you want it to be a
+double of the <em>Markdown\Reader</em> interface:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
+
+<span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
+
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>PhpSpec\ObjectBehavior</span>;
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MarkdownSpec</span> <span style=color:#66d9ef>extends</span> <span style=color:#a6e22e>ObjectBehavior</span>
+{
+    <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>it_converts_text_from_an_external_source</span>($reader)
+    {
+        $reader<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>beADoubleOf</span>(<span style=color:#e6db74>&#39;Markdown\Reader&#39;</span>);
+        $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>toHtmlFromReader</span>($reader)<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>shouldReturn</span>(<span style=color:#e6db74>&#34;&lt;p&gt;Hi, there&lt;/p&gt;&#34;</span>);
+    }
+}
+</code></pre></div><p>At the moment calling <code>Markdown\Reader::getMarkdown()</code> will return null.
+We can tell <strong>phpspec</strong> what we want it to return though.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
+
+<span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
+
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>PhpSpec\ObjectBehavior</span>;
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MarkdownSpec</span> <span style=color:#66d9ef>extends</span> <span style=color:#a6e22e>ObjectBehavior</span>
+{
+    <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>it_converts_text_from_an_external_source</span>($reader)
+    {
+        $reader<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>beADoubleOf</span>(<span style=color:#e6db74>&#39;Markdown\Reader&#39;</span>);
+        $reader<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>getMarkdown</span>()<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>willReturn</span>(<span style=color:#e6db74>&#34;Hi, there&#34;</span>);
+
+        $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>toHtmlFromReader</span>($reader)<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>shouldReturn</span>(<span style=color:#e6db74>&#34;&lt;p&gt;Hi, there&lt;/p&gt;&#34;</span>);
+    }
+}
+</code></pre></div><p>Now you can write the code that will get this example to pass. As well
+as refactoring your implementation you should see if you can refactor
+your specs once they are passing. In this case we can tidy it up a bit
+as <strong>phpspec</strong> lets you create the stub in an easier way. If you use a
+typehint, <strong>phpspec</strong> determine the required type of the collaborator:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
+
+<span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
+
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>PhpSpec\ObjectBehavior</span>;
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>Markdown\Reader</span>;
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MarkdownSpec</span> <span style=color:#66d9ef>extends</span> <span style=color:#a6e22e>ObjectBehavior</span>
+{
+    <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>it_converts_text_from_an_external_source</span>(<span style=color:#a6e22e>Reader</span> $reader)
+    {
+        $reader<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>getMarkdown</span>()<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>willReturn</span>(<span style=color:#e6db74>&#34;Hi, there&#34;</span>);
+
+        $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>toHtmlFromReader</span>($reader)<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>shouldReturn</span>(<span style=color:#e6db74>&#34;&lt;p&gt;Hi, there&lt;/p&gt;&#34;</span>);
+    }
+}
+</code></pre></div><p><strong>phpspec</strong> 2.* supports the use of <em>@param</em> annotations instead of
+parametric typehints for this purpose. However, this functionality is
+removed in <strong>phpspec</strong> 3.0.</p><h2 id=mocks>Mocks</h2><p>You also need to be able to get your parser to output to somewhere
+instead of just returning the formatted text. Again you create an
+interface:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
+
+<span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>Markdown</span>;
+
+<span style=color:#66d9ef>interface</span> <span style=color:#a6e22e>Writer</span>
+{
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>writeText</span>($text);
+}
+</code></pre></div><p>You again pass it to the method but this time the
+<code>Markdown\Writer::writeText($text)</code> method does not return something to
+your parser class. The new method you are going to create on the parser
+will not return anything either. Instead it is going to give the
+formatted text to the <em>Markdown\Writer</em> so you want to be able to give an
+example of what that formatted text should be. You can do this using a
+mock, the mock gets created in the same way as the stub. This time you
+tell it to expect <code>Markdown\Writer::writeText($text)</code> to get called with
+a particular value:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
+
+<span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
+
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>PhpSpec\ObjectBehavior</span>;
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>Markdown\Writer</span>;
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MarkdownSpec</span> <span style=color:#66d9ef>extends</span> <span style=color:#a6e22e>ObjectBehavior</span>
+{
+    <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>it_outputs_converted_text</span>(<span style=color:#a6e22e>Writer</span> $writer)
+    {
+        $writer<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>writeText</span>(<span style=color:#e6db74>&#34;&lt;p&gt;Hi, there&lt;/p&gt;&#34;</span>)<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>shouldBeCalled</span>();
+
+        $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>outputHtml</span>(<span style=color:#e6db74>&#34;Hi, there&#34;</span>, $writer);
+    }
+}
+</code></pre></div><p>Now if the method is not called with that value then the example will
+fail.</p><p>The <em>shouldBeCalled</em> method should be used <strong>before</strong> any SUS (System
+Under Spec) calls in order to make an example fail if other mock methods
+are invoked. In the previous example, if other methods than <em>writeText</em>
+are called in <em>outputHTML</em> (that is the SUS) function, the test will fail.
+PHPSpec won&rsquo;t prevent you to use <em>shouldBeCalled</em> <strong>after</strong> SUS calls:
+this is not recommended as <em>shouldBeCalled</em> would behave as
+<em>shouldHaveBeenCalled</em>. To understand how <em>shouldHaveBeenCalled</em> behaves,
+please continue reading.</p><h2 id=spies>Spies</h2><p>Instead of using a mock you could use a spy. The difference is that you
+check what happened after the object&rsquo;s behaviour has happened:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
+
+<span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
+
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>PhpSpec\ObjectBehavior</span>;
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>Markdown\Writer</span>;
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MarkdownSpec</span> <span style=color:#66d9ef>extends</span> <span style=color:#a6e22e>ObjectBehavior</span>
+{
+    <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>it_outputs_converted_text</span>(<span style=color:#a6e22e>Writer</span> $writer)
+    {
+        $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>outputHtml</span>(<span style=color:#e6db74>&#34;Hi, there&#34;</span>, $writer);
+
+        $writer<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>writeText</span>(<span style=color:#e6db74>&#34;&lt;p&gt;Hi, there&lt;/p&gt;&#34;</span>)<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>shouldHaveBeenCalled</span>();
+    }
+}
+</code></pre></div><p>The difference is in behaviour: when using spies, you will not be forced
+to check every call that happens on double object</p><nav class=nav-pagination><ul><li><strong>Previous</strong>
+<a href=https://jaylinski.github.io/phpspec/v7/cookbook/matchers/>Matchers</a></li><li><strong>Next</strong>
+<a href=https://jaylinski.github.io/phpspec/v7/manual/let-and-letgo/>Let and Let Go</a></li></ul></nav></main></section><section><footer><ul><li><a href=https://www.github.com/phpspec/phpspec/edit/main/docs/en/v7/manual/prophet-objects.md target=_blank>Improve this page</a></li></ul></footer></section></body></html>

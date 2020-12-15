@@ -1,0 +1,147 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=description content><meta name=viewport content="width=device-width,initial-scale=1"><link rel=canonical href=/phpspec/v7/manual/getting-started/><title>Getting Started &#8212; phpspec</title><link rel=alternate hreflang=en href=https://jaylinski.github.io/phpspec/v7/manual/getting-started/><link rel=icon href=https://jaylinski.github.io/phpspec/favicon.ico type=image/x-icon><link rel=stylesheet href=/phpspec/styles.min.a96f39663f75bb4d9452426e8b90189e17009551917678010a9dec08c0ae1132.css type=text/css></head><body><section><nav class=nav-main><ul><li><a href=/phpspec/>main</a></li><li><a href=/phpspec/v7/manual/introduction/ class=nav-active>phpspec manual</a></li></ul><ul><li><a href=https://www.github.com/phpspec/phpspec target=_blank>phpspec repo</a></li><li><a href=https://www.github.com/phpspec/prophecy target=_blank>prophecy repo</a></li></ul></nav></section><section class=flex><aside><div class=nav-sidebar-headline><h3 class=h-chapter>Chapters</h3><button>Menu</button></div><nav class=nav-sidebar><section class=nav-sidebar-main><ul><li><a href=/phpspec/v7/manual/introduction/>Introduction</a><nav id=TableOfContents><ol><li><a href=#specbdd-with-phpspec>SpecBDD with phpspec</a></li><li><a href=#specbdd-and-tdd>SpecBDD and TDD</a></li><li><a href=#specbdd-and-storybdd>SpecBDD and StoryBDD</a></li></ol></nav></li><li><a href=/phpspec/v7/manual/installation/>Installation</a><nav id=TableOfContents><ol><li><a href=#installation-process>Installation process:</a></li><li><a href=#method-1-composer-command>Method #1 (Composer command):</a></li><li><a href=#method-2-composer-config-file>Method #2 (Composer config file):</a></li><li><a href=#result>Result:</a></li></ol></nav></li><li class=nav-active><a href=/phpspec/v7/manual/getting-started/>Getting Started</a><nav id=TableOfContents><ol><li><a href=#examples>Examples</a></li><li><a href=#specifying-behaviour>Specifying behaviour</a></li><li><a href=#skipping-examples>Skipping examples</a></li></ol></nav></li><li><a href=/phpspec/v7/manual/prophet-objects/>Prophet Objects</a><nav id=TableOfContents><ol><li><a href=#stubs>Stubs</a></li><li><a href=#mocks>Mocks</a></li><li><a href=#spies>Spies</a></li></ol></nav></li><li><a href=/phpspec/v7/manual/let-and-letgo/>Let and Let Go</a><nav id=TableOfContents></nav></li><li><a href=/phpspec/v7/manual/upgrading-to-phpspec-7/>Upgrading to phpspec 7</a><nav id=TableOfContents></nav></li><li><a href=/phpspec/v7/manual/upgrading-to-phpspec-6/>Upgrading to phpspec 6</a><nav id=TableOfContents></nav></li><li><a href=/phpspec/v7/manual/upgrading-to-phpspec-5/>Upgrading to phpspec 5</a><nav id=TableOfContents></nav></li><li><a href=/phpspec/v7/manual/upgrading-to-phpspec-4/>Upgrading to phpspec 4</a><nav id=TableOfContents><ol><li><a href=#upgrading-for-users>Upgrading for Users</a></li><li><a href=#upgrading-for-extension-authors>Upgrading for Extension Authors</a></li></ol></nav></li></ul><hr><ul><li><a href=/phpspec/v7/cookbook/configuration/>Configuration</a><nav id=TableOfContents><ol><li><a href=#psr-4>PSR-4</a></li><li><a href=#spec-and-source-locations>Spec and source locations</a></li><li><a href=#formatter>Formatter</a></li><li><a href=#options>Options</a></li><li><a href=#extensions>Extensions</a></li><li><a href=#custom-matchers>Custom matchers</a></li><li><a href=#bootstrapping>Bootstrapping</a></li></ol></nav></li><li><a href=/phpspec/v7/cookbook/console/>Running phpspec</a><nav id=TableOfContents><ol><li><a href=#describe-command>Describe Command</a></li><li><a href=#run-command>Run Command</a></li></ol></nav></li><li><a href=/phpspec/v7/cookbook/construction/>Object Construction</a><nav id=TableOfContents><ol><li><a href=#using-the-constructor>Using the Constructor</a></li><li><a href=#using-a-factory-method>Using a Factory Method</a></li><li><a href=#overriding>Overriding</a></li></ol></nav></li><li><a href=/phpspec/v7/cookbook/matchers/>Matchers</a><nav id=TableOfContents><ol><li><a href=#identity-matcher>Identity Matcher</a></li><li><a href=#comparison-matcher>Comparison Matcher</a></li><li><a href=#approximately-matcher>Approximately Matcher</a></li><li><a href=#throw-matcher>Throw Matcher</a></li><li><a href=#trigger-matcher>Trigger Matcher</a></li><li><a href=#type-matcher>Type Matcher</a></li><li><a href=#objectstate-matcher>ObjectState Matcher</a></li><li><a href=#count-matcher>Count Matcher</a></li><li><a href=#scalar-matcher>Scalar Matcher</a></li><li><a href=#iterablecontain-matcher>IterableContain Matcher</a></li><li><a href=#iterablekeywithvalue-matcher>IterableKeyWithValue Matcher</a></li><li><a href=#iterablekey-matcher>IterableKey Matcher</a></li><li><a href=#iterateas-matcher>IterateAs Matcher</a></li><li><a href=#iteratelike-matcher>IterateLike Matcher</a></li><li><a href=#startiteratingas-matcher>StartIteratingAs Matcher</a></li><li><a href=#stringcontain-matcher>StringContain Matcher</a></li><li><a href=#stringstart-matcher>StringStart Matcher</a></li><li><a href=#stringend-matcher>StringEnd Matcher</a></li><li><a href=#stringregex-matcher>StringRegex Matcher</a></li><li><a href=#inline-matcher>Inline Matcher</a></li></ol></nav></li><li><a href=/phpspec/v7/cookbook/templates/>Templates</a><nav id=TableOfContents><ol><li><a href=#overriding-templates>Overriding templates</a></li><li><a href=#parameters>Parameters</a></li></ol></nav></li><li><a href=/phpspec/v7/cookbook/extensions/>Extensions</a><nav id=TableOfContents><ol><li><a href=#installation>Installation</a></li><li><a href=#configuration>Configuration</a></li><li><a href=#example-extensions>Example extensions</a></li></ol></nav></li><li><a href=/phpspec/v7/cookbook/wrapped-objects/>Working with Wrapped Objects</a><nav id=TableOfContents></nav></li></ul></section><section class=nav-sidebar-version><h3>Version</h3><ul><li class=nav-version-active><a href=/phpspec/v7/manual/introduction/>v7&nbsp;(<strong>latest</strong>)</a></li><li><a href=/phpspec/v6/manual/introduction/>v6</a></li></ul></section></nav></aside><main><h1>Getting Started</h1><p>Say you are building a tool that converts
+<a href=http://en.wikipedia.org/wiki/Markdown>Markdown</a> into HTML. Well,
+that&rsquo;s a large task. But you can work on simple things first and a
+design will emerge that will reach all the necessary features.</p><p>What is the simplest thing you could add? It should convert a string
+line into a paragraph with HTML markup, i.e. <em>&ldquo;Hi, there&rdquo;</em> would become
+<em>"&lt;p>Hi, there&lt;/p>"</em>.</p><p>So you can start by doing this. Well, not the boring bits. Let
+<strong>phpspec</strong> take care of the boring stuff for you. You just need to tell
+<strong>phpspec</strong> you will be working on the <em>Markdown</em> class.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ bin/phpspec desc Markdown
+Specification <span style=color:#66d9ef>for</span> Markdown created in spec.
+</code></pre></div><p>You can also specify a fully qualified class name. Don&rsquo;t forget that if
+you use backslashes you need to pass the class name inside double
+quotes. Alternatively you could use forward slashes and skip the quotes.
+<strong>phpspec</strong> will create the folder structure following PSR standards.</p><p>Ok. What have you just done? <strong>phpspec</strong> has created the spec for you!
+You can navigate to the spec folder and see the spec there:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
+
+<span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
+
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>Markdown</span>;
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>PhpSpec\ObjectBehavior</span>;
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MarkdownSpec</span> <span style=color:#66d9ef>extends</span> <span style=color:#a6e22e>ObjectBehavior</span>
+{
+    <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>it_is_initializable</span>()
+    {
+        $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>shouldHaveType</span>(<span style=color:#a6e22e>Markdown</span><span style=color:#f92672>::</span><span style=color:#a6e22e>class</span>);
+    }
+}
+</code></pre></div><p>So what do you have here? Your spec extends the special <code>ObjectBehavior</code>
+class. This class is special, because it gives you the ability to call
+all the methods of the class you are describing and match the result of
+the operations against your expectations.</p><h2 id=examples>Examples</h2><p>The object behavior is made up of examples. Examples are encased in
+public methods, started with <code>it_</code> or <code>its_</code>.</p><p><strong>phpspec</strong> searches for these methods in your specification to run.</p><p>Why are underscores used in example names?
+<code>just_because_its_much_easier_to_read</code> than
+<code>someLongCamelCasingLikeThat</code>.</p><h2 id=specifying-behaviour>Specifying behaviour</h2><p>Now we are ready to move on. Let&rsquo;s update that first example to express
+your next intention:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
+
+<span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
+
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>PhpSpec\ObjectBehavior</span>;
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MarkdownSpec</span> <span style=color:#66d9ef>extends</span> <span style=color:#a6e22e>ObjectBehavior</span>
+{
+    <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>it_converts_plain_text_to_html_paragraphs</span>()
+    {
+        $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>toHtml</span>(<span style=color:#e6db74>&#34;Hi, there&#34;</span>)<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>shouldReturn</span>(<span style=color:#e6db74>&#34;&lt;p&gt;Hi, there&lt;/p&gt;&#34;</span>);
+    }
+}
+</code></pre></div><p>Here you are telling <strong>phpspec</strong> that your object has a <code>toHtml</code> method.
+You are also telling it that this method should return &ldquo;&lt;p>Hi,
+there&lt;/p>&rdquo;. Now what? Run the specs. You may not believe this, but
+<strong>phpspec</strong> will understand you are describing a class that doesn&rsquo;t
+exist and offer to create it!</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ bin/phpspec run
+
+&gt; spec<span style=color:#ae81ff>\M</span>arkdown
+
+  ✘ it converts plain text to html paragraphs
+      Class Markdown does not exist.
+
+         Do you want me to create it <span style=color:#66d9ef>for</span> you? <span style=color:#f92672>[</span>Y/n<span style=color:#f92672>]</span>
+</code></pre></div><p><strong>phpspec</strong> will then place the empty class in the directory. Run your
+spec again and&mldr; OK, you guessed:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ bin/phpspec run
+
+&gt; spec<span style=color:#ae81ff>\M</span>arkdown
+
+  ✘ it converts plain text to html paragraphs
+      Method Markdown::toHtml<span style=color:#f92672>()</span> not found.
+
+         Do you want me to create it <span style=color:#66d9ef>for</span> you? <span style=color:#f92672>[</span>Y/n<span style=color:#f92672>]</span>
+</code></pre></div><p>What you just did was moving fast through the amber state into the red.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Markdown</span>
+{
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>toHtml</span>($argument1)
+    {
+        <span style=color:#75715e>// TODO: write logic here
+</span><span style=color:#75715e></span>    }
+}
+</code></pre></div><p>You got rid of the fatal errors and ugly messages that resulted from
+non-existent classes and methods and went straight into a real failed
+spec:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ bin/phpspec run
+
+&gt; spec<span style=color:#ae81ff>\M</span>arkdown
+
+  ✘ it converts plain text to html paragraphs
+      Expected <span style=color:#e6db74>&#34;&lt;p&gt;Hi, there&lt;/p&gt;&#34;</span>, but got null.
+
+
+<span style=color:#ae81ff>1</span> examples <span style=color:#f92672>(</span><span style=color:#ae81ff>1</span> failed<span style=color:#f92672>)</span>
+284ms
+</code></pre></div><p>You can change the generated specs and classes using <a href=/phpspec/v7/cookbook/templates/>templates</a>.</p><p>According to the TDD rules you now have full permission to write code.
+Red means &ldquo;time to add code&rdquo;; red is great! Now you can add just enough
+code to make the spec green, quickly. There will be time to get it
+right, but first just get it green.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Markdown</span>
+{
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>toHtml</span>()
+    {
+        <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;&lt;p&gt;Hi, there&lt;/p&gt;&#34;</span>;
+    }
+}
+</code></pre></div><p>And voilà:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ bin/phpspec run
+
+&gt; spec<span style=color:#ae81ff>\M</span>arkdown
+
+  ✔ it converts plain text to html paragraphs
+
+<span style=color:#ae81ff>1</span> examples <span style=color:#f92672>(</span><span style=color:#ae81ff>1</span> passed<span style=color:#f92672>)</span>
+247ms
+</code></pre></div><p>There are heaps of resources out there already if you would like to read
+more about the TDD/SpecBDD cycle. Here are just a couple for you to look
+at:</p><ol><li><a href=http://www.amazon.com/RSpec-Book-Behaviour-Development-Cucumber/dp/1934356379>The Rspec
+Book</a>
+Development with RSpec, Cucumber, and Friends by David Chelimsky,
+Dave Astels, Zach Dennis, Aslak Hellesøy, Bryan Helmkamp, Dan North</li><li><a href=http://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530>Test Driven Development: By
+Example</a>
+Kent Beck</li></ol><p>In the example here you specified the value the <code>toHtml</code> method should
+return by using one of <strong>phpspec&rsquo;s</strong> matchers. There are several other
+matchers available, you can read more about these in the
+<a href=/phpspec/v7/cookbook/matchers/>Matchers Cookbook</a>.</p><h2 id=skipping-examples>Skipping examples</h2><p>It may happen that some of your examples will depend on some environment
+requirements. For example, it might need a php extension or a minimal
+php version. In that case, you don&rsquo;t want your examples to fail because
+<strong>phpspec</strong> is unable to run them.</p><p><strong>phpspec</strong> allows to easily skip an example by throwing a
+<em>SkippingException</em> wherever you feel the need for it.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
+
+<span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>spec</span>;
+
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>PhpSpec\ObjectBehavior</span>;
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>PhpSpec\Exception\Example\SkippingException</span>;
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>RocketSpec</span> <span style=color:#66d9ef>extends</span> <span style=color:#a6e22e>ObjectBehavior</span>
+{
+    <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>it_flies_around_the_moon</span>()
+    {
+        <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span><span style=color:#a6e22e>function_exists</span>(<span style=color:#e6db74>&#39;rocket_launch&#39;</span>)) {
+            <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>SkippingException</span>(
+                <span style=color:#e6db74>&#39;The rocket extension is not installed&#39;</span>
+            );
+        }
+        $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>flyToTheMoon</span>();
+    }
+}
+</code></pre></div><p>An extension is also available to skip examples regarding a
+class/interface was not found. It can be found here:
+<a href=https://github.com/akeneo/PhpSpecSkipExampleExtension>https://github.com/akeneo/PhpSpecSkipExampleExtension</a></p><nav class=nav-pagination><ul><li><strong>Previous</strong>
+<a href=https://jaylinski.github.io/phpspec/v7/cookbook/console/>Running phpspec</a></li><li><strong>Next</strong>
+<a href=https://jaylinski.github.io/phpspec/v7/cookbook/construction/>Object Construction</a></li></ul></nav></main></section><section><footer><ul><li><a href=https://www.github.com/phpspec/phpspec/edit/main/docs/en/v7/manual/getting-started.md target=_blank>Improve this page</a></li></ul></footer></section></body></html>
